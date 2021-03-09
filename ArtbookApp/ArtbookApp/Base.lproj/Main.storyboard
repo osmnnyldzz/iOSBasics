@@ -112,6 +112,7 @@
                         <outlet property="artistTextField" destination="agN-XY-ZpX" id="ltS-Oe-fmg"/>
                         <outlet property="imageView" destination="VY2-If-NPm" id="vgh-vr-4TO"/>
                         <outlet property="nameTextField" destination="agN-XY-ZpX" id="TeH-sT-fxH"/>
+                        <outlet property="saveButton" destination="RwM-lx-TW7" id="v9c-46-i6e"/>
                         <outlet property="yearTextField" destination="fWz-bi-dT3" id="W4w-N3-8Bo"/>
                     </connections>
                 </viewController>

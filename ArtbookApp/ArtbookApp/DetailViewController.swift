@@ -14,6 +14,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var artistTextField: UITextField!
     @IBOutlet weak var yearTextField: UITextField!
+    @IBOutlet weak var saveButton: UIButton!
     
     var chosenPaintingName = ""
     var chosenPaintingID : UUID?
@@ -21,7 +22,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if chosenPaintingName == "" {
+        if chosenPaintingName != "" {
             //Core Data
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -38,7 +39,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             do {
                 let results = try context.fetch(fetchRequest)
                 
-                if results.count > 0 {
+                if results.count >= 0 {
                     for result in results as! [NSManagedObject] {
                         
                         if let name = result.value(forKey: "name") as? String {
@@ -66,6 +67,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             
         }
         else {
+            saveButton.isHidden = false
+            saveButton.isEnabled = false
             nameTextField.text = ""
             artistTextField.text = ""
             yearTextField.text = ""
