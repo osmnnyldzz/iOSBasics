@@ -17,20 +17,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fph-xs-3wz">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="239" width="414" height="551"/>
                             </mapView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RTQ-Qe-X5U">
+                                <rect key="frame" x="113" y="94" width="188" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comment" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NPj-X4-yTD">
+                                <rect key="frame" x="113" y="155" width="188" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9F-G1-Wfx">
+                                <rect key="frame" x="109" y="814" width="196" height="30"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ha-90-vqy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fph-xs-3wz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="75G-Sc-Sud"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fph-xs-3wz" secondAttribute="bottom" id="Pyr-2J-P6y"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fph-xs-3wz" secondAttribute="trailing" id="fWU-Af-6fr"/>
-                            <constraint firstItem="fph-xs-3wz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oM2-Ed-Hf0"/>
+                            <constraint firstItem="RTQ-Qe-X5U" firstAttribute="trailing" secondItem="NPj-X4-yTD" secondAttribute="trailing" id="72P-uc-47M"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="k9F-G1-Wfx" secondAttribute="bottom" constant="18" id="92C-W4-xZ0"/>
+                            <constraint firstItem="k9F-G1-Wfx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="109" id="BUe-2G-g1f"/>
+                            <constraint firstItem="fph-xs-3wz" firstAttribute="top" secondItem="NPj-X4-yTD" secondAttribute="bottom" constant="50" id="NfA-Kx-0N6"/>
+                            <constraint firstItem="fph-xs-3wz" firstAttribute="centerX" secondItem="k9F-G1-Wfx" secondAttribute="centerX" id="U7s-q1-Sw4"/>
+                            <constraint firstItem="NPj-X4-yTD" firstAttribute="top" secondItem="RTQ-Qe-X5U" secondAttribute="bottom" constant="27" id="Wct-cQ-4TS"/>
+                            <constraint firstItem="RTQ-Qe-X5U" firstAttribute="leading" secondItem="NPj-X4-yTD" secondAttribute="leading" id="akf-xK-d6s"/>
+                            <constraint firstItem="NPj-X4-yTD" firstAttribute="centerX" secondItem="fph-xs-3wz" secondAttribute="centerX" id="baj-D3-hm0"/>
+                            <constraint firstItem="RTQ-Qe-X5U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="n2W-JO-GCf"/>
+                            <constraint firstItem="RTQ-Qe-X5U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="113" id="pyY-e2-DN8"/>
+                            <constraint firstItem="RTQ-Qe-X5U" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="u8Q-GA-Dii"/>
+                            <constraint firstItem="k9F-G1-Wfx" firstAttribute="top" secondItem="fph-xs-3wz" secondAttribute="bottom" constant="24" id="x89-jp-Ifz"/>
+                            <constraint firstItem="fph-xs-3wz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zYK-mc-vm6"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="commentText" destination="NPj-X4-yTD" id="s6k-aN-WBS"/>
                         <outlet property="mapView" destination="fph-xs-3wz" id="YhZ-b7-nhO"/>
+                        <outlet property="titleText" destination="RTQ-Qe-X5U" id="CDB-Da-ZMz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -39,8 +70,14 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

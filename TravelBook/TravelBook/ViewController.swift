@@ -8,12 +8,18 @@
 import UIKit
 import MapKit
 import CoreLocation
-
+import CoreData
 
 class ViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var titleText: UITextField!
+    @IBOutlet weak var commentText: UITextField!
+    
+    
     var locationManager = CLLocationManager()
+    var choosenLatitude = Double()
+    var choosenLongitude = Double()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +38,29 @@ class ViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelega
 
     }
 
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        
+        //İlk önce AppDelegate çağırıyoruz.
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let newPlace = NSEntityDescription.insertNewObject(forEntityName: "Places", into: context)
+        
+        newPlace.setValue(titleText.text, forKey: "title")
+        newPlace.setValue(commentText.text, forKey: "subtitle")
+        newPlace.setValue(choosenLongitude, forKey: "longitude")
+        newPlace.setValue(choosenLatitude, forKey: "latitude")
+        newPlace.setValue(UUID(), forKey: "id")
+        
+        do {
+            try context.save()
+            print("Success")
+        } catch {
+            print("Error")
+        }
+        
+        
+    }
     
     @objc func chooseLocation(gestureRecognizer:UILongPressGestureRecognizer){
         
@@ -41,11 +70,14 @@ class ViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelega
             //Dokunulan noktayı koordinata çevirdik.
             let touchedCoordinates = mapView.convert(touchedPoint, toCoordinateFrom: mapView)
             
+            choosenLatitude = touchedCoordinates.latitude
+            choosenLongitude = touchedCoordinates.longitude
+            
             //Pinleme işlemi için Annotation oluşturduk.
             let annotation = MKPointAnnotation()
             annotation.coordinate = touchedCoordinates
-            annotation.title = "New Annotation"
-            annotation.subtitle = "Travel Book"
+            annotation.title = titleText.text
+            annotation.subtitle = commentText.text
             
             //Pini haritaya ekledik.
             mapView.addAnnotation(annotation)
