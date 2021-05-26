@@ -33,7 +33,7 @@
                     <navigationItem key="navigationItem" id="gSM-Cp-dL4"/>
                     <connections>
                         <outlet property="tableView" destination="j8t-IW-kC6" id="jsX-ZP-js3"/>
-                        <segue destination="BYZ-38-t0r" kind="show" id="Y2S-ic-RBw"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toViewController" id="Y2S-ic-RBw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Xw-5c-gDO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

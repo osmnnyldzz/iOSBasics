@@ -14,11 +14,17 @@ class ListViewViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem (barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(goToDetail))
+        
         tableView.delegate = self
         tableView.dataSource = self
         
         
         
+    }
+    
+    @objc func goToDetail(){
+        performSegue(withIdentifier: "toViewController", sender: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
